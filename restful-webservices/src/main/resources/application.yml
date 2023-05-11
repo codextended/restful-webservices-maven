@@ -10,3 +10,21 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  app:
+    name: Spring Webservices
+    description: Spring Boot Restful Webservices Demo
+    version: 1.0.0
