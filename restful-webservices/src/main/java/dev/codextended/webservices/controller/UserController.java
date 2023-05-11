@@ -2,6 +2,7 @@ package dev.codextended.webservices.controller;
 
 import dev.codextended.webservices.dto.UserDto;
 import dev.codextended.webservices.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto user) {
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto user) {
         UserDto savedUser = userService.createUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
@@ -35,7 +36,7 @@ public class UserController {
     }
 
     @PutMapping("{userId}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable("userId") Long userId, @RequestBody UserDto user) {
+    public ResponseEntity<UserDto> updateUser(@PathVariable("userId") Long userId, @Valid @RequestBody UserDto user) {
         UserDto updatedUser = userService.updateUser(userId, user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
