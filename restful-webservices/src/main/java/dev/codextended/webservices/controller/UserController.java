@@ -2,6 +2,9 @@ package dev.codextended.webservices.controller;
 
 import dev.codextended.webservices.dto.UserDto;
 import dev.codextended.webservices.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(
+        name = "User Resource",
+        description = "Resource for user management"
+)
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/users")
@@ -17,6 +24,14 @@ public class UserController {
 
     private UserService userService;
 
+    @Operation(
+            summary = "Create User",
+            description = "Used to create users"
+    )
+    @ApiResponse(
+            responseCode = "201",
+            description = "CREATED"
+    )
     @PostMapping
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto user) {
         UserDto savedUser = userService.createUser(user);
