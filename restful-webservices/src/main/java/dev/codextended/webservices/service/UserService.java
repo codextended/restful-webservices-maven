@@ -1,7 +1,6 @@
 package dev.codextended.webservices.service;
 
 import dev.codextended.webservices.dto.UserDto;
-import dev.codextended.webservices.entity.User;
 
 import java.util.List;
 

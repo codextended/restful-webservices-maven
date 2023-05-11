@@ -1,7 +1,6 @@
 package dev.codextended.webservices.controller;
 
 import dev.codextended.webservices.dto.UserDto;
-import dev.codextended.webservices.entity.User;
 import dev.codextended.webservices.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
